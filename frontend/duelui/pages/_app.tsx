@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { AppProps } from 'next/app';
 import { ThemeProvider } from 'next-themes';
-import { Toaster } from '@/components/ui/toaster';
+import { Toaster } from '../src/components/ui/toaster';
 import { Web3Provider } from '../lib/blockchain/Web3Provider';
 import Layout from '../components/layout/Layout';
 import '../styles/globals.css';

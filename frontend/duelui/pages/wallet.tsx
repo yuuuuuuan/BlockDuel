@@ -1,12 +1,12 @@
 import { NextPage } from 'next';
 import Head from 'next/head';
 import { useState } from 'react';
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
-import { Button } from '@/components/ui/button';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { useWeb3 } from '@/lib/blockchain/Web3Provider';
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '../src/components/ui/card';
+import { Button } from '../src/components/ui/button';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '../src/components/ui/tabs';
+import { useWeb3 } from '../lib/blockchain/Web3Provider';
 import { AlertCircle, CheckCircle2 } from 'lucide-react';
-import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
+import { Alert, AlertDescription, AlertTitle } from '../src/components/ui/alert';
 
 const WalletPage: NextPage = () => {
   const { account, balance, connectWallet, disconnectWallet, isConnected, network, rewards } = useWeb3();

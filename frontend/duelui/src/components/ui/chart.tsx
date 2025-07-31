@@ -4,7 +4,7 @@ import * as React from "react";
 import { ResponsiveContainer } from "recharts";
 
 interface ChartProps extends React.HTMLAttributes<HTMLDivElement> {
-  children: React.ReactNode
+  children: React.ReactElement
 }
 
 export function Chart({ children, ...props }: ChartProps) {

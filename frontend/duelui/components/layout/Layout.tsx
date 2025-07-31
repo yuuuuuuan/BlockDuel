@@ -1,10 +1,8 @@
 import { ReactNode } from 'react';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
-// Update the import path below if the file is located elsewhere, e.g.:
 import { useWeb3 } from '../../lib/blockchain/Web3Provider';
-// Or use the correct relative path based on your project structure
-import { Button } from '../../components/ui/button';
+import { Button } from '../../src/components/ui/button';
 import { Wallet, Menu, X } from 'lucide-react';
 import { useState } from 'react';
 import { ThemeToggle } from './ThemeToggle';
@@ -20,7 +18,7 @@ const Layout = ({ children }: LayoutProps) => {
   
   const navItems = [
     { name: 'Home', path: '/' },
-    { name: 'Games', path: '/games/2048' },
+    { name: 'Games', path: '/games' },
     { name: 'Wallet', path: '/wallet' },
   ];
   
