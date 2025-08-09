@@ -8,7 +8,7 @@ const HomePage: NextPage = () => {
   const gameCards = [
     {
       title: 'Blockchain Adventure',
-      description: 'Explore the world of blockchain and earn exciting rewards!',
+      description: 'Explore the world of blockchain and you can earn exciting rewards!',
       path: '/games/blockchain-adventure',
       color: 'bg-gradient-to-r from-blue-400 to-indigo-600',
       //imagePath: '/images/blockchain-icon.png', // 自定义图标路径
