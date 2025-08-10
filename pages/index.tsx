@@ -9,6 +9,7 @@ const HomePage: NextPage = () => {
     {
       title: 'Blockchain Adventure',
       description: 'Explore the world of blockchain and you can earn exciting rewards!',
+      gametype: 'PVP',
       path: '/games/blockchain-adventure',
       color: 'bg-gradient-to-r from-blue-400 to-indigo-600',
       //imagePath: '/images/blockchain-icon.png', // 自定义图标路径
@@ -16,6 +17,7 @@ const HomePage: NextPage = () => {
     {
       title: 'Coming Soon',
       description: 'New exciting blockchain games are on the way!',
+      gametype: 'Staytuned',
       path: '#',
       color: 'bg-gradient-to-r from-purple-400 to-indigo-600',
       disabled: true, // 禁用状态
