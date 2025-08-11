@@ -10,9 +10,9 @@ const HomePage: NextPage = () => {
       title: 'Blockchain Adventure',
       description: 'Explore the world of blockchain and you can earn exciting rewards!',
       gametype: 'PVP',
-      path: '/games/blockchain-adventure',
+      path: '/games/2048',
       color: 'bg-gradient-to-r from-blue-400 to-indigo-600',
-      //imagePath: '/images/blockchain-icon.png', // 自定义图标路径
+      imagePath: '../pubilc/favicon.svg', // 自定义图标路径
     },
     {
       title: 'Coming Soon',
