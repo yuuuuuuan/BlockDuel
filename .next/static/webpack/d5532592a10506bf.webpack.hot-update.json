@@ -1,1 +1,0 @@
-{"c":["webpack"],"r":["pages/games/2048"],"m":["./components/ui/use-toast.ts","./node_modules/@radix-ui/react-progress/dist/index.mjs","./node_modules/next/dist/build/webpack/loaders/next-client-pages-loader.js?absolutePagePath=%2Fmnt%2Fd%2F.github%2FBlockDuel%2Fpages%2Fgames%2F2048.tsx&page=%2Fgames%2F2048!","./pages/games/2048.tsx","./src/components/ui/progress.tsx"]}
