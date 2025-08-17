@@ -32,10 +32,10 @@
       "static/chunks/main.js",
       "static/chunks/pages/_error.js"
     ],
-    "/wallet": [
+    "/games/2048": [
       "static/chunks/webpack.js",
       "static/chunks/main.js",
-      "static/chunks/pages/wallet.js"
+      "static/chunks/pages/games/2048.js"
     ]
   },
   "ampFirstPages": []
