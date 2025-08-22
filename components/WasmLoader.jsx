@@ -1,39 +1,52 @@
-// components/WasmLoader.js
+// components/WasmLoader.jsx
 import { useEffect } from 'react';
 
-const WasmLoader = () => {
+const WasmLoader = ({ onScoreUpdate }) => {
   useEffect(() => {
     const loadWasm = async () => {
-      // 1. 加载 wasm_exec.js 脚本
+      // 1. Load wasm_exec.js script
       const script = document.createElement('script');
-      script.src = '/wasm/wasm_exec.js';  // 确保这是实际的 wasm_exec.js 路径
+      script.src = '/wasm/wasm_exec.js'; // Ensure this is the correct path for wasm_exec.js
       script.onload = async () => {
-        // 2. 创建 Go 运行时环境
+        // 2. Create Go runtime environment
         const go = new Go();
         
         try {
-          // 3. 获取 wasm 文件路径
-          const wasmFilePath = '/wasm/2048.wasm';  // 这里是实际的 wasm 文件路径
+          // 3. Get wasm file path
+          const wasmFilePath = '/wasm/2048.wasm'; // Actual wasm file path
           const response = await fetch(wasmFilePath);
           const buffer = await response.arrayBuffer();
 
-          // 4. 实例化 WebAssembly 模块
+          // 4. Instantiate the WebAssembly module
           const { instance } = await WebAssembly.instantiate(buffer, go.importObject);
 
-          // 5. 运行 Go 程序
+          // 5. Run the Go program
           go.run(instance);
+
+          // 6. Get WebAssembly game's score (assuming wasm has a getScore function)
+          const getScore = () => {
+            const score = instance.exports.getScore(); // Assuming WebAssembly has a getScore function
+            onScoreUpdate(score);  // Update the score in the parent component
+          };
+
+          // 7. Set interval to periodically update the score
+          const intervalId = setInterval(getScore, 100);  // Get score every 100ms
+
+          // Cleanup timer on component unmount
+          return () => clearInterval(intervalId);
+
         } catch (error) {
-          console.error('加载 WebAssembly 失败:', error);
+          console.error('Failed to load WebAssembly:', error);
         }
       };
       
-      document.body.appendChild(script);  // 将脚本添加到页面中
+      document.body.appendChild(script);  // Append script to the body
     };
 
     loadWasm();
-  }, []);  // 依赖项为空数组，表示只在组件挂载时加载
+  }, [onScoreUpdate]);  // Only load the wasm on component mount
 
-  return <div>正在加载 WebAssembly...</div>;
+  return <div>Loading WebAssembly...</div>;
 };
 
 export default WasmLoader;
