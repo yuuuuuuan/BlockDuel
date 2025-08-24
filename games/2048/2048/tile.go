@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-package twenty48
+package game2048
 
 import (
 	"bytes"
@@ -168,7 +168,7 @@ func MoveTiles(tiles map[*Tile]struct{}, size int, dir Dir) (bool, int) {
 	if vy > 0 {
 		sort.Sort(sort.Reverse(sort.IntSlice(ty)))
 	}
-
+	totalScore := 0
 	moved := false
 	for _, j := range ty {
 		for _, i := range tx {
@@ -214,7 +214,7 @@ func MoveTiles(tiles map[*Tile]struct{}, size int, dir Dir) (bool, int) {
 				break
 			}
 			// next is the next state of the tile t.
-			totalScore := 0
+
 			next := TileData{}
 			next.value = t.current.value
 			// If there is a tile at the next position (ii, jj), this should be
@@ -241,7 +241,7 @@ func MoveTiles(tiles map[*Tile]struct{}, size int, dir Dir) (bool, int) {
 			t.movingCount = 0
 		}
 	}
-	return moved
+	return moved, totalScore
 }
 
 func addRandomTile(tiles map[*Tile]struct{}, size int) error {
@@ -261,7 +261,7 @@ func addRandomTile(tiles map[*Tile]struct{}, size int) error {
 		availableCells = append(availableCells, i)
 	}
 	if len(availableCells) == 0 {
-		return errors.New("twenty48: there is no space to add a new tile")
+		return errors.New("2048: there is no space to add a new tile")
 	}
 	c := availableCells[rand.IntN(len(availableCells))]
 	v := 2

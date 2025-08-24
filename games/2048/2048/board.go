@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-package 2048
+package game2048
 
 import (
 	"errors"
@@ -20,7 +20,7 @@ import (
 	"github.com/hajimehoshi/ebiten/v2"
 )
 
-var taskTerminated = errors.New("twenty48: task terminated")
+var taskTerminated = errors.New("2048: task terminated")
 
 type task func() error
 

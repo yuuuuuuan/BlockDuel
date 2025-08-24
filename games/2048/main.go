@@ -17,25 +17,19 @@ package main
 import (
 	"log"
 
-	"github.com/yuuuuuuan/BlockDuel/games/2048/twenty48"
+	game2048 "2048/2048"
 
 	"github.com/hajimehoshi/ebiten/v2"
 )
 
 func main() {
-	game, err := twenty48.NewGame()
+	game, err := game2048.NewGame()
 	if err != nil {
 		log.Fatal(err)
 	}
-	ebiten.SetWindowSize(twenty48.ScreenWidth, twenty48.ScreenHeight)
+	ebiten.SetWindowSize(game2048.ScreenWidth, game2048.ScreenHeight)
 	ebiten.SetWindowTitle("2048 (Ebitengine Demo)")
 	if err := ebiten.RunGame(game); err != nil {
 		log.Fatal(err)
 	}
-}
-
-//export getScore
-func getScore() int {
-	// 返回当前游戏中的分数
-	return twenty48.GetScore()
 }

@@ -12,9 +12,11 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-package twenty48
+package game2048
 
 import (
+	_ "embed"
+
 	"github.com/hajimehoshi/ebiten/v2"
 )
 
@@ -30,6 +32,10 @@ type Game struct {
 	board      *Board
 	boardImage *ebiten.Image
 	score      int
+}
+
+func (g *Game) GetScore() int {
+	return g.score
 }
 
 // NewGame generates a new Game object.
@@ -74,4 +80,14 @@ func (g *Game) Draw(screen *ebiten.Image) {
 	y := (sh - bh) / 2
 	op.GeoM.Translate(float64(x), float64(y))
 	screen.DrawImage(g.boardImage, op)
+
+	// // 显示分数
+	// scoreText := "Score: " + strconv.Itoa(g.score)
+	// textOp := &text.DrawOptions{}
+	// textOp.ColorScale.ScaleWithColor(color.White)
+	// textOp.GeoM.Translate(20, 40)
+
+	// // 使用默认字体
+	// face := text.DefaultFontFace
+	// text.Draw(screen, scoreText, face, textOp)
 }
