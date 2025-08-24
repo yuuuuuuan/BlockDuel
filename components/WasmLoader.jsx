@@ -13,7 +13,7 @@ const WasmLoader = ({ onScoreUpdate }) => {
         
         try {
           // 3. Get wasm file path
-          const wasmFilePath = '/wasm/2048.wasm'; // Actual wasm file path
+          const wasmFilePath = '/wasm/main.wasm'; // Actual wasm file path
           const response = await fetch(wasmFilePath);
           const buffer = await response.arrayBuffer();
 

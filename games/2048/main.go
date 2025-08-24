@@ -17,8 +17,9 @@ package main
 import (
 	"log"
 
+	"github.com/yuuuuuuan/BlockDuel/games/2048/twenty48"
+
 	"github.com/hajimehoshi/ebiten/v2"
-	"github.com/hajimehoshi/ebiten/v2/examples/2048/2048"
 )
 
 func main() {
@@ -31,4 +32,10 @@ func main() {
 	if err := ebiten.RunGame(game); err != nil {
 		log.Fatal(err)
 	}
+}
+
+//export getScore
+func getScore() int {
+	// 返回当前游戏中的分数
+	return twenty48.GetScore()
 }

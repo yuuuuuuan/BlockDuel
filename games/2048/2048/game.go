@@ -29,6 +29,7 @@ type Game struct {
 	input      *Input
 	board      *Board
 	boardImage *ebiten.Image
+	score      int
 }
 
 // NewGame generates a new Game object.
@@ -55,6 +56,7 @@ func (g *Game) Update() error {
 	if err := g.board.Update(g.input); err != nil {
 		return err
 	}
+	g.score = g.board.GetScore()
 	return nil
 }
 

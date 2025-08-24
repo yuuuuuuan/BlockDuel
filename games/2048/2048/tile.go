@@ -154,7 +154,7 @@ const (
 // MoveTiles returns true if there are tiles that are to move, otherwise false.
 //
 // When MoveTiles is called, all tiles must not be about to move.
-func MoveTiles(tiles map[*Tile]struct{}, size int, dir Dir) bool {
+func MoveTiles(tiles map[*Tile]struct{}, size int, dir Dir) (bool, int) {
 	vx, vy := dir.Vector()
 	tx := []int{}
 	ty := []int{}
@@ -214,12 +214,14 @@ func MoveTiles(tiles map[*Tile]struct{}, size int, dir Dir) bool {
 				break
 			}
 			// next is the next state of the tile t.
+			totalScore := 0
 			next := TileData{}
 			next.value = t.current.value
 			// If there is a tile at the next position (ii, jj), this should be
 			// mergeable. Let's merge.
 			if tt := currentOrNextTileAt(tiles, ii, jj); tt != t && tt != nil {
 				next.value = t.current.value + tt.current.value
+				totalScore += next.value
 				tt.next.value = 0
 				tt.next.x = ii
 				tt.next.y = jj

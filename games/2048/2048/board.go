@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-package twenty48
+package 2048
 
 import (
 	"errors"
@@ -29,6 +29,7 @@ type Board struct {
 	size  int
 	tiles map[*Tile]struct{}
 	tasks []task
+	score int
 }
 
 // NewBoard generates a new Board with giving a size.
@@ -36,6 +37,7 @@ func NewBoard(size int) (*Board, error) {
 	b := &Board{
 		size:  size,
 		tiles: map[*Tile]struct{}{},
+		score: 0,
 	}
 	for i := 0; i < 2; i++ {
 		if err := addRandomTile(b.tiles, b.size); err != nil {
@@ -74,9 +76,11 @@ func (b *Board) Move(dir Dir) error {
 	for t := range b.tiles {
 		t.stopAnimation()
 	}
-	if !MoveTiles(b.tiles, b.size, dir) {
+	moved, gained := MoveTiles(b.tiles, b.size, dir)
+	if !moved {
 		return nil
 	}
+	b.score += gained
 	b.tasks = append(b.tasks, func() error {
 		for t := range b.tiles {
 			if t.IsMoving() {
@@ -106,6 +110,10 @@ func (b *Board) Move(dir Dir) error {
 		return taskTerminated
 	})
 	return nil
+}
+
+func (b *Board) GetScore() int {
+	return b.score
 }
 
 // Size returns the board size.
