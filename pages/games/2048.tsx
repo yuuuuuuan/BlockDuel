@@ -8,6 +8,7 @@ import { useToast } from '../../components/ui/use-toast';
 import { Progress } from '../../src/components/ui/progress';
 import { useWeb3 } from '../../lib/blockchain/Web3Provider';
 import WasmLoader from '../../components/WasmLoader';
+import Loader_2048 from '../../components/games/Loader_2048';
 
 const REWARD_THRESHOLD = 2048;
 
@@ -121,7 +122,7 @@ const Game2048Page: NextPage = () => {
             {/* 游戏区域 */}
             <div className="flex-grow max-w-3xl">
               <Card className="p-6">
-                <WasmLoader/>
+                <Loader_2048 onScoreUpdate={handleScoreUpdate} />
               </Card>
             </div>
 

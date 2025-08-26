@@ -25,9 +25,9 @@ import (
 var game *game2048.Game
 
 //export GetScore
-func GetScore() int {
+func GetScore() int32 {
 	if game != nil {
-		return game.GetScore()
+		return int32(game.GetScore())
 	}
 	return 0 // 如果 game 为 nil，返回 0
 }
