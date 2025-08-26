@@ -22,6 +22,16 @@ import (
 	"github.com/hajimehoshi/ebiten/v2"
 )
 
+var game *game2048.Game
+
+//export GetScore
+func GetScore() int {
+	if game != nil {
+		return game.GetScore()
+	}
+	return 0 // 如果 game 为 nil，返回 0
+}
+
 func main() {
 	game, err := game2048.NewGame()
 	if err != nil {
@@ -32,4 +42,5 @@ func main() {
 	if err := ebiten.RunGame(game); err != nil {
 		log.Fatal(err)
 	}
+
 }

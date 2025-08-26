@@ -16,8 +16,10 @@ package game2048
 
 import (
 	_ "embed"
+	"strconv"
 
 	"github.com/hajimehoshi/ebiten/v2"
+	"github.com/hajimehoshi/ebiten/v2/ebitenutil"
 )
 
 const (
@@ -81,13 +83,7 @@ func (g *Game) Draw(screen *ebiten.Image) {
 	op.GeoM.Translate(float64(x), float64(y))
 	screen.DrawImage(g.boardImage, op)
 
-	// // 显示分数
-	// scoreText := "Score: " + strconv.Itoa(g.score)
-	// textOp := &text.DrawOptions{}
-	// textOp.ColorScale.ScaleWithColor(color.White)
-	// textOp.GeoM.Translate(20, 40)
-
-	// // 使用默认字体
-	// face := text.DefaultFontFace
-	// text.Draw(screen, scoreText, face, textOp)
+	// 显示分数
+	scoreText := "Score: " + strconv.Itoa(g.score)
+	ebitenutil.DebugPrintAt(screen, scoreText, 20, 40)
 }
